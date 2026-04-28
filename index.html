@@ -1,0 +1,2925 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Strategie, SEO & digitale Umsetzung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alata&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --cream:   #F2F3AE;
+  --gold:    #EDD382;
+  --orange:  #FC9E4F;
+  --red:     #FF521B;
+  --ink-bg:  #020122;
+
+  --bg:       #020122;
+  --surface:  #07042e;
+  --surface-2: #0c0840;
+  --ink:      #F2F3AE;
+  --muted:    rgba(237,211,130,0.65);
+  --line:     rgba(252,158,79,0.18);
+  --accent:   #FC9E4F;
+  --accent-2: #EDD382;
+  --dark:     #020122;
+  --dark-2:   #FC9E4F;
+  --paper:    #07042e;
+
+  --shadow: 0 20px 60px rgba(2,1,34,0.70);
+  --shadow-orange: 0 10px 36px rgba(255,82,27,0.30);
+
+  --radius: 22px;
+  --radius-sm: 14px;
+  --max: 1240px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 700px 600px at 5% 15%, rgba(252,158,79,0.07), transparent),
+    radial-gradient(ellipse 600px 500px at 95% 85%, rgba(252,158,79,0.05), transparent),
+    radial-gradient(ellipse 500px 400px at 50% 50%, rgba(237,211,130,0.04), transparent);
+}
+
+a { color: inherit; }
+.wrap { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; position: relative; z-index: 1; }
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(20px);
+  background: rgba(2,1,34,0.94);
+  border-bottom: 1px solid rgba(252,158,79,0.14);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 78px;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.brand-top {
+  font-family: 'Alata', sans-serif;
+  font-size: 0.70rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.brand-bottom {
+  font-family: 'Alata', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #F2F3AE;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.60);
+  font-size: 0.92rem;
+  transition: color 180ms ease;
+}
+
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  text-decoration: none;
+  border: 1.5px solid var(--accent);
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 180ms ease;
+  background: var(--accent);
+  color: #020122;
+}
+
+.nav-cta:hover {
+  background: transparent;
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-orange);
+}
+
+/* ─── HERO ─── */
+.hero { padding: 72px 0 42px; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(252,158,79,0.16);
+  box-shadow: var(--shadow);
+  border-radius: calc(var(--radius) + 8px);
+  padding: 38px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -30% auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252,158,79,0.12), transparent 65%);
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.70rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1.5px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Alata', sans-serif;
+  font-size: clamp(2.6rem, 5.5vw, 5.4rem);
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+  max-width: 10.5ch;
+  color: #F2F3AE;
+}
+
+.hero-sub {
+  margin: 24px 0 0;
+  max-width: 60ch;
+  color: rgba(255,255,255,0.65);
+  font-size: 1.04rem;
+  line-height: 1.8;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 13px 22px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.90rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #020122;
+  border: 1.5px solid var(--accent);
+  box-shadow: var(--shadow-orange);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: transparent;
+  color: var(--accent);
+  box-shadow: 0 16px 40px rgba(252,158,79,0.30);
+}
+
+.btn-secondary {
+  border: 1.5px solid rgba(252,158,79,0.35);
+  background: rgba(252,158,79,0.08);
+  color: var(--accent);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  background: rgba(252,158,79,0.14);
+  border-color: var(--accent);
+}
+
+.hero-panel {
+  background: var(--surface);
+  color: #F2F3AE;
+  border-radius: calc(var(--radius) + 8px);
+  padding: 28px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(237,211,130,0.12);
+  display: grid;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top right, rgba(252,158,79,0.12), transparent 55%);
+  pointer-events: none;
+}
+
+.mini-card {
+  position: relative;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.mini-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.mini-label {
+  font-family: 'Alata', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.mini-chip {
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.76rem;
+  color: rgba(255,255,255,.72);
+}
+
+.mini-title {
+  font-family: 'Alata', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.mini-copy {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,.70);
+}
+
+/* ─── STATS ─── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(252,158,79,0.16);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.stat-number {
+  font-family: 'Alata', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  margin-bottom: 6px;
+  color: var(--accent);
+}
+
+.stat-label {
+  color: rgba(255,255,255,0.60);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+/* ─── SECTION ─── */
+.section { padding: 88px 0; }
+
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.section-title {
+  margin: 0;
+  font-family: 'Alata', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  color: #F2F3AE;
+}
+
+.section-copy {
+  margin: 0;
+  max-width: 58ch;
+  color: rgba(255,255,255,0.60);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* ─── PROJECTS ─── */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.project.featured { margin-bottom: 20px; }
+
+.project {
+  grid-column: span 6;
+  position: relative;
+  min-height: 390px;
+  border-radius: 28px;
+  padding: 32px;
+  color: #F2F3AE;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow);
+  isolation: isolate;
+}
+
+.project::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.32));
+  z-index: -1;
+}
+
+.project::after {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252,158,79,0.08), rgba(249,220,92,0));
+  right: -80px;
+  bottom: -80px;
+  z-index: -1;
+}
+
+.project.featured {
+  grid-column: span 12;
+  min-height: 470px;
+}
+
+.bg-paola,
+.bg-word,
+.bg-grove,
+.bg-pet {
+  background: linear-gradient(135deg, #101527 0%, #05051A 100%);
+  border: 1px solid rgba(242,140,56,0.24);
+}
+
+.bg-performance {
+  background: linear-gradient(135deg, #15112A 0%, #05051A 100%);
+  border: 1px solid rgba(216,184,102,0.22);
+}
+
+.bg-care {
+  background: linear-gradient(135deg, #071B2D 0%, #05051A 100%);
+  border: 1px solid rgba(99,180,190,0.20);
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.project-num {
+  font-family: 'Alata', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+
+.project-stack {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  border: 1px solid rgba(252,158,79,0.20);
+  background: rgba(252,158,79,0.07);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 0.76rem;
+  color: rgba(249,220,92,0.85);
+}
+
+.project-title {
+  margin: 0 0 10px;
+  font-family: 'Alata', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 3.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  max-width: 12ch;
+  color: #F2F3AE;
+}
+
+.project-copy {
+  max-width: 64ch;
+  color: rgba(255,255,255,.70);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+.impact {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+  max-width: 780px;
+}
+
+.impact-item {
+  border: 1px solid rgba(252,158,79,0.14);
+  background: rgba(252,158,79,0.05);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.impact-k {
+  font-family: 'Alata', sans-serif;
+  font-weight: 800;
+  font-size: 1.55rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  color: var(--accent);
+}
+
+.impact-v {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.5;
+}
+
+.project-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 22px;
+}
+
+.ghost-btn,
+.solid-btn {
+  border-radius: 999px;
+  padding: 11px 18px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1.5px solid rgba(255,255,255,.20);
+  background: transparent;
+  color: #F2F3AE;
+  cursor: pointer;
+  transition: all 180ms ease;
+}
+
+.ghost-btn:hover,
+.solid-btn:hover {
+  transform: translateY(-2px);
+}
+
+.solid-btn {
+  background: var(--accent);
+  color: #020122;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-orange);
+}
+
+.solid-btn:hover {
+  background: transparent;
+  color: var(--accent);
+}
+
+/* ─── SERVICES ─── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.service-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+
+.service-card:hover {
+  border-color: rgba(252,158,79,0.28);
+  transform: translateY(-3px);
+}
+
+.service-kicker {
+  font-family: 'Alata', sans-serif;
+  color: var(--accent-2);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-size: .68rem;
+  margin-bottom: 14px;
+}
+
+.service-title {
+  font-family: 'Alata', sans-serif;
+  margin: 0 0 10px;
+  font-size: 1.18rem;
+  letter-spacing: -.03em;
+  color: #F2F3AE;
+}
+
+.service-copy {
+  margin: 0;
+  color: rgba(255,255,255,0.58);
+  font-size: .93rem;
+  line-height: 1.7;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.timeline-step {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 20px;
+  position: relative;
+  min-height: 220px;
+  box-shadow: var(--shadow);
+  transition: border-color 200ms ease;
+}
+
+.timeline-step:hover {
+  border-color: rgba(252,158,79,0.20);
+}
+
+.timeline-step::before {
+  content: attr(data-step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #020122;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.80rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-orange);
+}
+
+.timeline-title {
+  font-family: 'Alata', sans-serif;
+  margin: 0 0 10px;
+  font-size: 1.12rem;
+  letter-spacing: -0.03em;
+  color: #F2F3AE;
+}
+
+.timeline-copy {
+  margin: 0;
+  color: rgba(255,255,255,0.58);
+  font-size: .92rem;
+  line-height: 1.7;
+}
+
+/* ─── CTA ─── */
+.cta { padding: 0 0 94px; }
+
+.cta-card {
+  background: linear-gradient(135deg, #07042e 0%, #020122 55%, #1a0800 100%);
+  border: 1px solid rgba(252,158,79,0.22);
+  color: #F2F3AE;
+  border-radius: 30px;
+  padding: 36px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(252,158,79,0.10), transparent 55%);
+  pointer-events: none;
+}
+
+.cta-title {
+  font-family: 'Alata', sans-serif;
+  margin: 0 0 10px;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: #F2F3AE;
+  position: relative;
+}
+
+.cta-copy {
+  margin: 0;
+  color: rgba(255,255,255,.72);
+  max-width: 60ch;
+  line-height: 1.7;
+  position: relative;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.cta-meta {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(252,158,79,0.14);
+  font-family: 'Alata', sans-serif;
+  font-size: 0.70rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--accent);
+  position: relative;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid rgba(249,220,92,0.12);
+  padding: 32px 0 48px;
+  background: #020122;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-line {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.38);
+}
+
+/* ─── MODAL ─── */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(2,1,34,0.82);
+  backdrop-filter: blur(16px);
+  padding: 24px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal.open { display: flex; }
+
+.modal-card {
+  width: min(1160px, 100%);
+  max-height: min(88vh, 980px);
+  background: var(--surface);
+  border-radius: 28px;
+  box-shadow: 0 30px 100px rgba(0,0,0,.55);
+  border: 1px solid rgba(249,220,92,0.12);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #07042e;
+  border-bottom: 1px solid rgba(252,158,79,0.16);
+}
+
+.modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.modal-label {
+  font-family: 'Alata', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.modal-current {
+  font-family: 'Alata', sans-serif;
+  font-size: 0.90rem;
+  color: #F2F3AE;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modal-close {
+  border: 1px solid rgba(249,220,92,0.25);
+  background: rgba(2,1,34,0.94);
+  color: rgba(255,255,255,0.80);
+  border-radius: 999px;
+  min-width: 42px;
+  height: 42px;
+  cursor: pointer;
+  font-size: 1.15rem;
+  transition: all 180ms ease;
+}
+
+.modal-close:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #020122;
+}
+
+/* ─── CASE STUDIES ─── */
+.case {
+  display: none;
+  padding: 24px 26px 30px;
+}
+
+.case.active { display: block; }
+
+.case-hero {
+  border-radius: 24px;
+  padding: 28px;
+  color: #F2F3AE;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.case-hero::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: -70px;
+  bottom: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(252,158,79,0.10), rgba(249,220,92,0));
+}
+
+.case-topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: start;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.case-kicker {
+  font-family: 'Alata', sans-serif;
+  font-size: .70rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.case-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.case-tag {
+  border: 1px solid rgba(252,158,79,0.20);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: .76rem;
+  color: rgba(249,220,92,0.80);
+  background: rgba(252,158,79,0.06);
+}
+
+.case-title {
+  margin: 0 0 12px;
+  font-family: 'Alata', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 1;
+  letter-spacing: -.05em;
+  max-width: 14ch;
+  color: #F2F3AE;
+}
+
+.case-summary {
+  margin: 0;
+  max-width: 72ch;
+  color: rgba(255,255,255,.72);
+  line-height: 1.75;
+  font-size: 1rem;
+}
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.case-metric {
+  border: 1px solid rgba(252,158,79,0.16);
+  background: rgba(252,158,79,0.06);
+  border-radius: 18px;
+  padding: 14px;
+}
+
+.case-metric strong {
+  display: block;
+  font-family: 'Alata', sans-serif;
+  font-size: 1.35rem;
+  letter-spacing: -.03em;
+  margin-bottom: 3px;
+  color: var(--accent);
+}
+
+.case-metric span {
+  font-size: .82rem;
+  color: rgba(255,255,255,.65);
+  line-height: 1.4;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.case-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.case-card h4 {
+  font-family: 'Alata', sans-serif;
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  letter-spacing: -.02em;
+  color: #F2F3AE;
+}
+
+.case-card p,
+.case-card li {
+  color: rgba(255,255,255,0.62);
+  font-size: .94rem;
+  line-height: 1.7;
+}
+
+.case-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.case-card li + li { margin-top: 6px; }
+.case-card.full { grid-column: 1 / -1; }
+
+/* ─── ABOUT PANEL ─── */
+.about-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+}
+
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(237,211,130,0.18);
+  background: rgba(237,211,130,0.07);
+  color: var(--accent-2);
+  font-family: 'Alata', sans-serif;
+  font-size: 0.70rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.about-title {
+  margin: 0;
+  font-family: 'Alata', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  color: #F2F3AE;
+}
+
+.about-copy {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.75;
+  color: rgba(255,255,255,.65);
+  max-width: 48ch;
+}
+
+.about-meta { display: grid; gap: 12px; margin-top: 6px; }
+
+.about-meta-item {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 12px;
+}
+
+.about-meta-label {
+  display: block;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.about-meta-value {
+  display: block;
+  font-size: 0.90rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,.70);
+}
+
+/* ─── CARE CTA ROW ─── */
+.care-cta-row {
+  display: flex;
+  gap: 16px;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+
+.care-cta {
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.care-cta.primary {
+  background: var(--accent);
+  color: #020122;
+  border: 1.5px solid var(--accent);
+  box-shadow: var(--shadow-orange);
+}
+
+.care-cta.primary:hover {
+  transform: translateY(-2px);
+  background: transparent;
+  color: var(--accent);
+}
+
+.care-cta.secondary {
+  border: 1.5px solid rgba(252,158,79,0.40);
+  color: var(--accent);
+  background: rgba(252,158,79,0.09);
+}
+
+.care-cta.secondary:hover {
+  background: rgba(252,158,79,0.16);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* ─── MISC CASE ELEMENTS ─── */
+.case-intro {
+  margin: 24px 0;
+  border-left: 3px solid var(--accent);
+  background: rgba(252,158,79,0.06);
+}
+
+.transformation {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.list-box {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.list-box h5 {
+  margin: 0 0 10px;
+  font-family: 'Alata', sans-serif;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: var(--accent);
+}
+
+.arrow-mid {
+  font-size: 1.6rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mini-panel {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 14px;
+  color: rgba(255,255,255,0.65);
+}
+
+.mini-panel strong {
+  display: block;
+  font-size: .90rem;
+  margin-bottom: 6px;
+  color: #F2F3AE;
+}
+
+.case-footer-actions {
+  padding: 24px 26px 26px;
+  border-top: 1px solid rgba(252,158,79,0.14);
+  display: grid;
+  gap: 18px;
+  background: rgba(2,1,34,0.20);
+}
+
+.case-nav-label {
+  margin: 0 0 10px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.modal-nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.modal-nav button,
+.case-switch-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(252,158,79,0.20);
+  background: rgba(252,158,79,0.06);
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  color: rgba(249,220,92,0.85);
+  font-family: 'Alata', sans-serif;
+  font-size: 0.85rem;
+}
+
+.modal-nav button:hover,
+.case-switch-btn:hover {
+  background: rgba(252,158,79,0.14);
+  border-color: rgba(252,158,79,0.40);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.modal-nav button.active {
+  background: var(--accent);
+  color: #020122;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-orange);
+}
+
+.case-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.case-switch {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.case-switch-btn {
+  min-width: 170px;
+}
+
+/* ─── DEEP DIVE ─── */
+.deepdive-box {
+  margin-top: 30px;
+  padding: 26px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(237,211,130,0.10), rgba(252,158,79,0.045));
+  border: 1px solid rgba(237,211,130,0.28);
+  box-shadow: 0 18px 45px rgba(2,1,34,0.38), inset 0 1px 0 rgba(255,255,255,0.06);
+  position: relative;
+}
+
+.deepdive-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.deepdive-label::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--accent);
+  display: inline-block;
+}
+
+.deepdive-title {
+  font-family: 'Alata', sans-serif;
+  margin: 0 0 10px;
+  font-size: 1.24rem;
+  letter-spacing: -0.02em;
+  color: #F2F3AE;
+}
+
+.deepdive-desc {
+  font-size: 0.94rem;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.deepdive-points {
+  padding-left: 18px;
+  margin: 0 0 18px 0;
+}
+
+.deepdive-points li {
+  font-size: 0.89rem;
+  color: rgba(255,255,255,0.66);
+  margin-bottom: 6px;
+}
+
+.deepdive-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  color: #020122;
+  text-decoration: none;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: 0.2s ease;
+  box-shadow: 0 10px 28px rgba(237,211,130,0.20);
+  border: 0;
+  cursor: pointer;
+}
+
+.deepdive-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(237,211,130,0.30);
+  background: #d4b86a;
+}
+
+.deepdive-box-pet,
+.deepdive-box-grove,
+.deepdive-box-performance {
+  border-color: rgba(237,211,130,0.30);
+}
+
+.deepdive-btn-pet,
+.deepdive-btn-grove,
+.deepdive-btn-performance {
+  background: var(--accent-2);
+  color: #020122;
+}
+
+.deepdive-btn-pet:hover,
+.deepdive-btn-grove:hover,
+.deepdive-btn-performance:hover {
+  box-shadow: 0 12px 30px rgba(237,211,130,0.30);
+  background: #d4b86a;
+}
+
+/* ─── PROFILE ─── */
+.profile-image-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.profile-image-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(237,211,130,0.07);
+  border: 2px solid rgba(237,211,130,0.18);
+  box-shadow: 0 12px 40px rgba(2,1,34,0.70), 0 0 0 6px rgba(237,211,130,0.05);
+  color: rgba(255,255,255,0.50);
+  font-size: 0.82rem;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1080px) {
+  .hero-grid,
+  .case-grid,
+  .cta-card,
+  .services-grid,
+  .timeline,
+  .stats-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .project,
+  .project.featured {
+    grid-column: span 12;
+  }
+
+  .impact { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 820px) {
+  .nav-inner {
+    min-height: auto;
+    padding: 14px 0;
+    align-items: flex-start;
+  }
+
+  .nav-links { gap: 14px; }
+
+  .hero-grid,
+  .section-top,
+  .cta-card,
+  .case-grid,
+  .services-grid,
+  .timeline,
+  .stats-row,
+  .case-metrics,
+  .mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card,
+  .hero-panel,
+  .project,
+  .service-card,
+  .timeline-step,
+  .cta-card,
+  .case-card,
+  .case-hero {
+    padding: 22px;
+  }
+
+  .transformation { grid-template-columns: 1fr; }
+
+  .arrow-mid {
+    transform: rotate(90deg);
+    justify-self: center;
+  }
+
+  .modal { padding: 10px; }
+
+  .case-footer-actions { align-items: flex-start; }
+  .modal-header { padding: 12px 14px; }
+  .modal-label { display: none; }
+  .case-footer-bottom { align-items: stretch; }
+  .case-switch { width: 100%; }
+  .case-switch-btn { flex: 1; min-width: 0; }
+
+
+  .nav-cta { display: none; }
+
+  .wrap { width: min(var(--max), calc(100% - 24px)); }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">
+        <span class="brand-top">Portfolio</span>
+        <span class="brand-bottom">Strategie, SEO & digitale Umsetzung</span>
+      </a>
+      <div class="nav-links">
+        <a href="#projekte">Projekte</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#prozess">Prozess</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <a class="nav-cta" href="mailto:nicoletta.schlattner@gmail.com">Kontakt aufnehmen →</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="hero-card">
+              <div class="eyebrow">Performance Marketing · SEO · digitale Strategie</div>
+              <h1>Sichtbarkeit ist kein Zufall. Wirkung auch nicht.</h1>
+              <p class="hero-sub">
+  Ich suche aktuell den Einstieg in eine Agentur im Bereich Performance Marketing und digitale Strategie. Mein Schwerpunkt liegt auf der Verbindung von SEO, Funnel-Denken, Content und Website-Strategie – immer mit dem Ziel, aus Sichtbarkeit konkrete Ergebnisse zu machen.
+</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#projekte">Projekte ansehen</a>
+                <a class="btn btn-secondary" href="#prozess">Arbeitsweise ansehen</a>
+              </div>
+            </div>
+            <div class="stats-row">
+              <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">strukturierte Projekt-Cases mit klarer Business-Logik</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">SEO</div>
+                <div class="stat-label">Local Visibility, Informationsarchitektur und Conversion im Fokus</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">Paid</div>
+                <div class="stat-label">Funnel-Denken und Performance-KPIs dort, wo es relevant ist</div>
+              </div>
+              <div class="stat">
+                <div class="stat-number">E2E</div>
+                <div class="stat-label">von Aufmerksamkeit bis Conversion logisch aufgebaut</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel about-panel">
+
+<div class="profile-image-wrapper">
+  <div class="profile-image-placeholder">
+    <span>Foto</span>
+  </div>
+</div>
+
+  <div class="about-badge">About</div>
+
+  <h2 class="about-title">
+    Strategie, Performance und SEO mit Fokus auf messbare Wirkung
+  </h2>
+
+  <p class="about-copy">
+    Digitale Strategien entstehen dort, wo Positionierung, Content, SEO und Performance zusammenspielen – genau in diesem Umfeld möchte ich arbeiten.
+  </p>
+
+  <div class="about-meta">
+
+    <div class="about-meta-item">
+      <span class="about-meta-label">Fokus</span>
+      <span class="about-meta-value">
+        Performance Marketing · SEO · Funnel-Strategie
+      </span>
+    </div>
+
+    <div class="about-meta-item">
+      <span class="about-meta-label">Arbeitsweise</span>
+      <span class="about-meta-value">
+        strukturiert · datenbasiert · agil
+      </span>
+    </div>
+
+    <div class="about-meta-item">
+      <span class="about-meta-label">Status</span>
+      <span class="about-meta-value">
+        aktuell offen für Positionen im Bereich Performance Marketing & digitale Strategie
+      </span>
+    </div>
+
+  </div>
+
+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projekte">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="eyebrow">Ausgewählte Projekte</div>
+            <h2 class="section-title">Jedes Projekt folgt einer klaren Logik:
+Ausgangssituation, strategische Herleitung, Umsetzung und messbare Ergebnisse.</h2>
+          </div>
+          <p class="section-copy">
+            Der Fokus liegt nicht nur auf dem „Was“, sondern vor allem auf dem „Warum“ –
+also den Entscheidungen, die hinter der Umsetzung stehen.
+          </p>
+        </div>
+
+
+
+
+       <div class="projects">
+
+
+  <!-- Pet E-Commerce -->
+<article class="project bg-pet">
+  <div class="project-top">
+    <div class="project-num">01 · Performance Case</div>
+    <div class="project-stack">
+      <span class="pill">D2C Strategy</span>
+      <span class="pill">Monetization</span>
+      <span class="pill">Brand Strategy</span>
+    </div>
+  </div>
+
+  <div>
+    <h3 class="project-title">PAWLY · D2C Growth System</h3>
+    <p class="project-copy">
+Entwicklung eines skalierbaren D2C-Growth-Systems im Pet-Commerce: von Positionierung und Produktarchitektur über Quiz-Funnel und Zero-Party Data bis hin zu Subscription, Retention und LTV-orientierter Skalierung.
+    </p>
+
+    <div class="impact">
+      <div class="impact-item">
+        <div class="impact-k">LTV/CAC ≥ 3:1</div>
+        <div class="impact-v">Zielkorridor für profitables Wachstum</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-k">Abo-first</div>
+        <div class="impact-v">Recurring Revenue als Skalierungshebel</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-k">Quiz Funnel</div>
+        <div class="impact-v">Zero-Party Data für Personalisierung</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-actions">
+    <button class="solid-btn" data-open="petcommerce">Case Study öffnen</button>
+  </div>
+</article>
+
+<article class="project bg-performance">
+  <div class="project-top">
+    <div class="project-num">02 · Performance Case</div>
+    <div class="project-stack">
+      <span class="pill">Paid Social</span>
+      <span class="pill">ROAS</span>
+      <span class="pill">Funnel</span>
+      <span class="pill">CRO</span>
+    </div>
+  </div>
+
+  <div>
+    <h3 class="project-title">PAWLY · Funnel Optimization</h3>
+    <p class="project-copy">
+Operative Optimierung eines D2C Paid-Funnels entlang von CTR, Conversion Rate, AOV und ROAS. Fokus auf Creative-Diagnose, Landingpage-Reibung, Retargeting-Struktur, Bundle-Logik und Subscription als Umsatzhebel.
+    </p>
+
+    <div class="impact">
+      <div class="impact-item">
+        <div class="impact-k">2,1 → 4,3</div>
+        <div class="impact-v">ROAS nach Optimierung</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-k">18 € → 9 €</div>
+        <div class="impact-v">CPA reduziert</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-k">32 € → 44 €</div>
+        <div class="impact-v">AOV gesteigert</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-actions">
+    <button class="solid-btn" data-open="petoptimization">Case Study öffnen</button>
+  </div>
+</article>
+
+  <!-- Featured: CareLingua -->
+  <article class="project featured bg-care">
+    <div class="project-top">
+      <div class="project-num">03 · Lead Generation Case</div>
+      <div class="project-stack">
+        <span class="pill">Social Media</span>
+        <span class="pill">Paid Funnel</span>
+        <span class="pill">UGC</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="project-title">CareLingua · Full-Funnel Lead Generation</h3>
+      <p class="project-copy">
+        Strategisches Funnel- und Content-System für internationale Pflegekräfte.
+        Fokus auf Persona-Synchronisierung, Retargeting-Logik, Community-Vertrauen
+        und skalierbare Kursvermarktung.
+      </p>
+
+      <div class="impact">
+        <div class="impact-item">
+          <div class="impact-k">&lt; 8 €</div>
+          <div class="impact-v">Lead-Kosten</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-k">6 : 1</div>
+          <div class="impact-v">CLV : CPA Verhältnis</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-k">5,27</div>
+          <div class="impact-v">ROAS gesamt</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-actions">
+      <button class="solid-btn" data-open="carelingua">Case Study öffnen</button>
+    </div>
+  </article>
+
+  <!-- THE GROVE -->
+  <article class="project bg-grove">
+    <div class="project-top">
+      <div class="project-num">04 · Social Media Strategy</div>
+      <div class="project-stack">
+        <span class="pill">Recruiting</span>
+        <span class="pill">Growth Strategy</span>
+        <span class="pill">Paid Social</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="project-title">THE GROVE</h3>
+      <p class="project-copy">
+        Strategische Fallstudie für Premium-Recruiting im Friseurhandwerk.
+        Statt klassischer Stellenanzeigen: Social Headhunting, Markenführung und ein
+        operatives Recruiting-Funnel-Modell.
+      </p>
+
+      <div class="impact">
+        <div class="impact-item">
+          <div class="impact-k">5</div>
+          <div class="impact-v">qualifizierte Bewerbungen pro Monat</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-k">&lt; 45</div>
+          <div class="impact-v">Tage Time-to-Hire Ziel</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-k">4 Phasen</div>
+          <div class="impact-v">Headhunting-Modell</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-actions">
+      <button class="solid-btn" data-open="thegrove">Case Study öffnen</button>
+    </div>
+  </article>
+
+  <!-- Paola Kubes -->
+  <article class="project bg-paola">
+    <div class="project-top">
+      <div class="project-num">05 · Digital Strategy</div>
+      <div class="project-stack">
+        <span class="pill">SEO</span>
+        <span class="pill">Local Growth</span>
+        <span class="pill">E-Commerce</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="project-title">PAOLA KUBES</h3>
+      <p class="project-copy">
+        Ganzheitliche digitale Neuausrichtung eines Interior- und Designprojekts:
+        Positionierungsberatung, Website-Relaunch, service-first Seitenarchitektur,
+        lokale SEO-Logik und Tracking-Grundlage.
+      </p>
+
+    <div class="case-metrics">
+      <div class="case-metric">
+        <strong>10+</strong>
+        <span>Seitenstruktur & Content-Bereiche konzipiert</span>
+      </div>
+      <div class="case-metric">
+        <strong>16</strong>
+        <span>Ziel-Keywords & Suchintentionen definiert</span>
+      </div>
+      <div class="case-metric">
+        <strong>SEO</strong>
+        <span>Grundlage für lokale Sichtbarkeit und Ranking-Aufbau gelegt</span>
+      </div>
+      <div class="case-metric">
+        <strong>Setup</strong>
+        <span>Tracking-, Launch- und Migrationslogik vorbereitet</span>
+      </div>
+    </div>
+  </div>
+
+    <div class="project-actions">
+      <button class="solid-btn" data-open="paola">Case Study öffnen</button>
+    </div>
+  </article>
+
+  <!-- WordAndSounds -->
+  <article class="project bg-word">
+    <div class="project-top">
+      <div class="project-num">06 · SEO Case</div>
+      <div class="project-stack">
+        <span class="pill">SEO</span>
+<span class="pill">Local Growth</span>
+        <span class="pill">Branding</span>
+        <span class="pill">Content</span>
+      </div>
+    </div>
+
+    <div>
+      <h3 class="project-title">WordAndSounds</h3>
+      <p class="project-copy">
+        Digitale Marketing- und SEO-Strategie für freie Trauung und Gesang in Berlin/Brandenburg.
+        Fokus auf Local SEO, Positionierung, Website-Relaunch, Content-Cluster und conversion-starke Trust-Elemente.
+      </p>
+
+      <div class="impact">
+        <div class="impact-item">
+          <div class="impact-k">Top 10</div>
+          <div class="impact-v">Zielkorridor für „Freie Traurednerin Berlin“</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-k">3x</div>
+          <div class="impact-v">qualifizierte Anfragen als Ziel</div>
+        </div>
+        <div class="impact-item">
+          <div class="impact-k">2 / Monat</div>
+          <div class="impact-v">SEO-Blogbeiträge als Wachstumsmotor</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-actions">
+      <button class="solid-btn" data-open="wordandsounds">Case Study öffnen</button>
+    </div>
+  </article>
+
+</div>
+
+  </section>
+
+    <section class="section" id="leistungen">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="eyebrow">Leistungsspektrum</div>
+            <h2 class="section-title">Breite Grundlage. Klare Anwendung.</h2>
+          </div>
+          <p class="section-copy">
+            Marketing funktioniert, wenn alles ineinandergreift – nicht, wenn alles gleichzeitig passiert.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-kicker">01</div>
+            <h3 class="service-title">Positionierung & Angebotslogik</h3>
+            <p class="service-copy">Schärfung von Positionierung und Angebot entlang klarer Zielgruppen und Nutzungssituationen.
+Ziel ist es, die richtigen Botschaften zur richtigen Zeit im Funnel zu platzieren und Nutzer gezielt zur passenden Entscheidung zu führen.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-kicker">02</div>
+            <h3 class="service-title">Funnel- & Performance-Logik</h3>
+            <p class="service-copy">Analyse und Strukturierung von Marketing entlang zentraler KPIs wie CTR, Conversion Rate, CPA und ROAS.
+Ziel ist es, Performance nicht isoliert zu betrachten, sondern entlang der gesamten Customer Journey zu steuern und zu optimieren.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-kicker">03</div>
+            <h3 class="service-title">Conversion & Nutzerführung</h3>
+            <p class="service-copy">Strukturierung von Landingpages und Touchpoints entlang klarer Conversion-Pfade – von erster Interaktion bis zum Abschluss.
+Ziel ist es, Reibung im Funnel zu reduzieren und Nutzer gezielt zur Conversion zu führen.</p>
+          </div>
+          <div class="service-card">
+            <div class="service-kicker">04</div>
+            <h3 class="service-title">Reporting & Wirkung</h3>
+            <p class="service-copy">Arbeit mit klar definierten KPIs, Baselines und Performance-Zielen sowie Ableitung konkreter Optimierungsansätze.
+ROAS, CPA und CLV dienen dabei als Grundlage für strukturierte Entscheidungen und nachvollziehbare Wirkung.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prozess">
+      <div class="wrap">
+        <div class="section-top">
+          <div>
+            <div class="eyebrow">Arbeitsweise</div>
+            <h2 class="section-title">Vom Briefing zur sauberen Entscheidungslogik.</h2>
+          </div>
+          <p class="section-copy">
+            Die Projekte folgen keinem reinen Designprozess, sondern einer klaren Abfolge aus Verstehen, Strukturieren, Umsetzen und Messen.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-step" data-step="01">
+            <h3 class="timeline-title">Verstehen</h3>
+            <p class="timeline-copy">Ausgangssituation, Zielgruppe, Markt und Schwachstellen analysieren. Probleme sauber benennen, bevor Lösungen gebaut werden.</p>
+          </div>
+          <div class="timeline-step" data-step="02">
+            <h3 class="timeline-title">Strategisch strukturieren</h3>
+            <p class="timeline-copy">Positionierung, Leistungsfokus, Seitenarchitektur, Keyword-Cluster und Conversion-Logik miteinander verzahnen.</p>
+          </div>
+          <div class="timeline-step" data-step="03">
+            <h3 class="timeline-title">Umsetzen</h3>
+            <p class="timeline-copy">Website, Funnel, Content-System oder Kampagnenstruktur so bauen, dass Design, Technik und Business-Ziel zusammenpassen.</p>
+          </div>
+          <div class="timeline-step" data-step="04">
+            <h3 class="timeline-title">Messen & weiterentwickeln</h3>
+            <p class="timeline-copy">Tracking, KPIs, Search Console, Paid-Daten oder Performance-Baselines nutzen, um Wirkung transparent zu machen und nachzujustieren.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="kontakt">
+  <div class="wrap">
+    <div class="cta-card">
+      <div>
+        <h2 class="cta-title">
+          Wenn Strategie und Umsetzung zusammenkommen, entsteht echte Wirkung.
+        </h2>
+
+        <p class="cta-copy">
+          Ich suche aktuell den Einstieg in eine Agentur, in der strategisches Denken und operative Umsetzung eng miteinander verzahnt sind und datenbasierte Entscheidungen im Mittelpunkt stehen.
+        </p>
+
+        <p class="cta-copy" style="margin-top: 14px;">
+          Besonders interessieren mich Rollen im Bereich Performance Marketing, digitale Strategie oder SEO, in denen ich meine Arbeitsweise weiterentwickeln und früh Verantwortung übernehmen kann.
+        </p>
+
+        <p class="cta-copy" style="margin-top: 14px;">
+          Ich freue mich über den Austausch.
+        </p>
+
+        <div class="cta-meta">
+          Performance Marketing · SEO · Funnel-Strategie
+        </div>
+      </div>
+
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:nicoletta.schlattner@gmail.com?subject=Kontakt%20zum%20Portfolio">
+          Kontakt aufnehmen
+        </a>
+        <a class="btn btn-secondary" href="#projekte">
+          Cases ansehen
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+ <footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-line">
+          Nicoletta Schlattner · Digitale Strategien · SEO · Performance
+        </div>
+        <div class="footer-line">
+          © 2026 · Portfolio
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Case Study Detailansicht">
+      <div class="modal-header">
+        <div class="modal-header-left">
+          <span class="modal-label">Case Study</span>
+          <span class="modal-current" id="currentCaseLabel">Paola Kubes</span>
+        </div>
+        <button class="modal-close" id="closeModal" aria-label="Schließen">×</button>
+      </div>
+
+      <div class="modal-body">
+
+      <section class="case active" id="case-paola">
+  <div class="case-hero bg-paola">
+    <div class="case-topline">
+      <div class="case-kicker">Case Study · Berlin 2024–2025</div>
+      <div class="case-tags">
+        <span class="case-tag">WordPress</span>
+        <span class="case-tag">WooCommerce</span>
+        <span class="case-tag">Local SEO</span>
+        <span class="case-tag">Google Business</span>
+        <span class="case-tag">Migration</span>
+      </div>
+    </div>
+
+    <h3 class="case-title">Digitale Neuausrichtung für Paola Kubes</h3>
+
+    <p class="case-summary">
+      Strategisches Relaunch-Konzept für den digitalen Auftritt von Paola Kubes:
+      mit klarer service-first Positionierung, geplanter WordPress-/WooCommerce-Architektur,
+      lokaler SEO-Logik und definierter Tracking-Grundlage.
+      Der Fokus lag auf der Transformation von einer statischen Online-Präsenz
+      hin zu einer strukturierten Akquise-Plattform. Die Umsetzung befindet sich
+      aktuell in Abstimmung, da zentrale Entscheidungen zur Positionierung und
+      Angebotsstruktur noch finalisiert werden.
+    </p>
+
+    <div class="case-metrics">
+  <div class="case-metric">
+    <strong>Architektur</strong>
+    <span>Struktur für skalierbare Service-, Content- und SEO-Seiten entwickelt</span>
+  </div>
+
+  <div class="case-metric">
+    <strong>16</strong>
+    <span>Ziel-Keywords und Suchintentionen für lokale Sichtbarkeit definiert</span>
+  </div>
+
+  <div class="case-metric">
+    <strong>SEO</strong>
+    <span>Grundlage für Ranking-Aufbau, interne Verlinkung und Onpage-Struktur gelegt</span>
+  </div>
+
+  <div class="case-metric">
+    <strong>Setup</strong>
+    <span>Tracking-, Launch- und Migrationslogik für die Umsetzung vorbereitet</span>
+  </div>
+</div>
+
+  <div class="case-grid">
+    <div class="case-card">
+      <h4>Transformation</h4>
+
+      <div class="transformation">
+        <div class="list-box">
+          <h5>Vorher</h5>
+          <ul>
+            <li>Unklare Positionierung zwischen Dienstleistungen und Shop</li>
+            <li>Wix-basierter Auftritt ohne skalierbare Struktur</li>
+            <li>Keine strategische SEO- oder Seitenarchitektur</li>
+            <li>Website als visuelle Präsenz ohne klare Conversion-Logik</li>
+          </ul>
+        </div>
+
+        <div class="arrow-mid">→</div>
+
+        <div class="list-box">
+          <h5>Nachher (Konzept)</h5>
+          <ul>
+            <li>Service-first Positionierung mit klarer Leistungsstruktur</li>
+            <li>Geplante WordPress-/WooCommerce-Architektur</li>
+            <li>Keyword-basierte Seitenstruktur für lokale Sichtbarkeit</li>
+            <li>Website als Akquise-Kanal mit klarer Nutzerführung</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <h4>Impact & Wirkung</h4>
+      <p>
+        Durch die konzeptionelle Neuausrichtung wurde die Grundlage geschaffen,
+        die Website nicht mehr als reine Präsentationsfläche zu nutzen,
+        sondern als aktives Instrument der Kundengewinnung.
+      </p>
+      <ul>
+        <li>Struktur für nachhaltige lokale Sichtbarkeit und SEO-Wachstum entwickelt</li>
+        <li>Klare Basis für Leadgenerierung über service-orientierte Seiten geschaffen</li>
+        <li>Skalierbares Setup für zukünftige Inhalte, Leistungen und Shop-Integration</li>
+        <li>Voraussetzung für datengetriebene Optimierung durch Tracking und KPIs definiert</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Meine Rolle</h4>
+      <ul>
+        <li>Strategische Konzeption: Positionierung, Angebotsstruktur, Funnel-Logik</li>
+        <li>Entwicklung der Seitenarchitektur und Keyword-Strategie</li>
+        <li>Planung der technischen Umsetzung in WordPress und WooCommerce</li>
+        <li>Definition von Tracking-, SEO- und Launch-Grundlagen</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Projektstatus & Einordnung</h4>
+      <p>
+        Die strategische Grundlage und Seitenstruktur wurden erarbeitet.
+        Die finale Umsetzung ist aktuell abhängig von der abschließenden
+        Positionierungsentscheidung und der Priorisierung der angebotenen Leistungen.
+      </p>
+      <p>
+        Der Case zeigt damit bewusst die konzeptionelle Phase eines Projekts,
+        also genau den Teil, der die Qualität der späteren Umsetzung maßgeblich bestimmt.
+      </p>
+    </div>
+
+    <div class="case-card full">
+      <h4>Projektlogik</h4>
+      <div class="mini-grid">
+        <div class="mini-panel">
+          <strong>Ausgangslage</strong>
+          Bestehende Website informierte nur, generierte aber nicht systematisch Anfragen.
+        </div>
+        <div class="mini-panel">
+          <strong>Strategische Entscheidung</strong>
+          Dienstleistungen ins Zentrum, Shop ergänzend integrieren statt shop-first denken.
+        </div>
+        <div class="mini-panel">
+          <strong>Struktur</strong>
+          Home, Leistungen, einzelne Leistungsseiten, Projekte, Shop, About, Kontakt.
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <h4>SEO- und Conversion-Ansatz</h4>
+      <ul>
+        <li>Fokus auf Suchbegriffe wie Möbelrestaurierung Berlin, Polsterei Berlin, Interior Design Berlin und Wandgestaltung Berlin</li>
+        <li>Saubere URL- und Seitenstruktur je Leistungsbereich</li>
+        <li>H1/H2/Meta-Daten, Alt-Texte und interne Verlinkungslogik</li>
+        <li>CTA-Logik wie „Projekt anfragen“, „Beratung starten“ und „unverbindlich Kontakt aufnehmen“</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Wichtigste Learnings</h4>
+      <ul>
+        <li>Eine Website ist ein Business-Tool, kein reines Designobjekt</li>
+        <li>Ohne klare Positionierung ist keine sinnvolle SEO-Strategie möglich</li>
+        <li>Conversion entsteht aus Struktur, Vertrauen, Inhalt und visueller Qualität</li>
+        <li>Local SEO und Google Business sind für lokale Dienstleister essenziell</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+     <section class="case" id="case-carelingua">
+
+  <!-- HERO -->
+  <div class="case-hero bg-care">
+    <div class="case-topline">
+      <div class="case-kicker">
+        Case Study · Konzeptprojekt · Social Media & Online-Kursplattform
+      </div>
+      <div class="case-tags">
+        <span class="case-tag">Meta Ads</span>
+        <span class="case-tag">Google Ads</span>
+        <span class="case-tag">UGC</span>
+        <span class="case-tag">Retargeting</span>
+      </div>
+    </div>
+
+    <h3 class="case-title">CareLingua</h3>
+
+    <p class="case-summary">
+      Datengetriebene Kommunikation für internationale Pflegekräfte: mit psychologisch
+      synchronisierten Personas, funnel-orientiertem Content, UGC-Logik,
+      Community Management und klarer Wirtschaftlichkeit.
+    </p>
+
+    <div class="case-metrics">
+      <div class="case-metric"><strong>&lt; 8 €</strong><span>Lead-Kosten</span></div>
+      <div class="case-metric"><strong>&gt; 350 €</strong><span>Customer Lifetime Value</span></div>
+      <div class="case-metric"><strong>6 : 1</strong><span>CLV : CPA Verhältnis</span></div>
+      <div class="case-metric"><strong>5,27</strong><span>ROAS gesamt</span></div>
+    </div>
+  </div>
+
+  <!-- CTA ROW -->
+  <div class="care-cta-row">
+
+    <a href="https://social-media-strategie-f-fuuvkop.gamma.site/"
+       target="_blank"
+       class="care-cta primary">
+      Präsentation ansehen
+    </a>
+
+    <a href="pdfs/carelingua_deep_dive.pdf"
+   target="_blank"
+   class="care-cta secondary">
+  Deep Dive ansehen
+</a>
+
+  </div>
+
+  <!-- EINORDNUNG -->
+  <div class="case-card case-intro">
+    <h4>Einordnung</h4>
+    <p>
+      Dieses Projekt ist ein strategisch entwickeltes Konzept auf Basis realer Marktmechaniken.
+      Ziel war es, ein skalierbares Performance-Marketing-System für digitale Sprachkurse zu modellieren –
+      inklusive Funnel-Logik, KPI-Struktur und wirtschaftlicher Bewertung.
+    </p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="case-grid">
+
+    <div class="case-card">
+      <h4>Strategisches Problem</h4>
+      <ul>
+        <li>lange emotionale Entscheidungszyklen durch Migration, Sprache und Berufseinstieg</li>
+        <li>Vertrauen muss vor dem Kauf aufgebaut werden</li>
+        <li>drei unterschiedliche Persona-Phasen erfordern differenzierte Ansprache</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Funnel-Logik</h4>
+      <ul>
+        <li>TOFU: emotionale Hero Reels</li>
+        <li>MOFU: Carousel + Micro-Learning Reels</li>
+        <li>BOFU: Testimonials + Plattform-Demo</li>
+        <li>sequenzielles Retargeting statt gleichzeitiger Botschaften</li>
+      </ul>
+    </div>
+
+    <div class="case-card full">
+      <h4>Kanäle und Content-System</h4>
+      <div class="mini-grid">
+        <div class="mini-panel"><strong>Instagram</strong> Community, Alltag, Emotion, Vertrauen</div>
+        <div class="mini-panel"><strong>TikTok</strong> Reichweite, Identifikation, Einstieg</div>
+        <div class="mini-panel"><strong>YouTube / Facebook</strong> Tiefe, Austausch und Informationsformate</div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <h4>Wirkungshebel</h4>
+      <ul>
+        <li>UGC ist wirksamer als klassische Brand-Kommunikation</li>
+        <li>Social Proof steigert Conversion signifikant</li>
+        <li>Community Management als aktiver Conversion-Treiber</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Business-Outcome</h4>
+      <ul>
+        <li>23 Kursbuchungen pro Monat im Beispiel-Setup</li>
+        <li>5.267 € Monatsumsatz bei 1.000 € Werbekosten</li>
+        <li>skalierbares Modell durch Retargeting-Backbone</li>
+      </ul>
+    </div>
+<div class="deepdive-box">
+
+  <div class="deepdive-label">
+    Strategisches Deep Dive
+  </div>
+
+  <h4 class="deepdive-title">
+    Funnel-, KPI- und Retargeting-System im Detail
+  </h4>
+
+  <p class="deepdive-desc">
+    Dieses Dokument zeigt die vollständige strategische Herleitung der Kampagne –
+    von der Persona-Synchronisierung über die Funnel-Architektur bis hin zur
+    konkreten KPI-Logik und Skalierungsstrategie. Im Fokus steht das Zusammenspiel
+    aus Content, Retargeting und wirtschaftlicher Bewertung entlang des gesamten Funnels.
+  </p>
+
+  <ul class="deepdive-points">
+    <li>3-stufige Funnel-Logik (TOFU / MOFU / BOFU)</li>
+    <li>Retargeting-System entlang von Nutzerverhalten</li>
+    <li>KPI-Struktur inkl. CPA, CLV und ROAS</li>
+    <li>Content-System für Vertrauen, Conversion und Skalierung</li>
+  </ul>
+
+  <a href="pdfs/carelingua_deep_dive.pdf"
+     target="_blank"
+     class="deepdive-btn">
+    Dokument öffnen
+  </a>
+
+</div>
+
+  </div>
+
+</section>
+<section class="case" id="case-petoptimization">
+
+  <div class="case-hero bg-performance">
+    <div class="case-topline">
+      <div class="case-kicker">Case Study · Konzeptprojekt · Performance Funnel Optimization</div>
+      <div class="case-tags">
+        <span class="case-tag">Paid Social</span>
+        <span class="case-tag">ROAS</span>
+        <span class="case-tag">CRO</span>
+        <span class="case-tag">Retention</span>
+      </div>
+    </div>
+
+    <h3 class="case-title">PAWLY · Full Funnel Optimization</h3>
+
+    <p class="case-summary">
+In diesem Case wurde ein bestehender Paid Funnel nicht neu aufgebaut, sondern systematisch analysiert und entlang der zentralen Wachstumshebel optimiert.
+
+Der Fokus lag darauf, strukturelle Engpässe entlang des Funnels zu identifizieren und zu beheben – von der Relevanz der Creatives über die Conversion-Logik der Landingpage bis hin zur Monetarisierung über Bundles und Subscription.
+
+Ziel war nicht die kurzfristige Verbesserung einzelner KPIs, sondern die Entwicklung eines skalierbaren Revenue-Systems.
+    </p>
+
+    <div class="case-metrics">
+      <div class="case-metric"><strong>2,1 → 4,3</strong><span>ROAS nach Optimierung</span></div>
+      <div class="case-metric"><strong>18 € → 9 €</strong><span>CPA reduziert</span></div>
+      <div class="case-metric"><strong>32 € → 44 €</strong><span>AOV gesteigert</span></div>
+      <div class="case-metric"><strong>+38 %</strong><span>Conversion Rate verbessert</span></div>
+    </div>
+  </div>
+
+  <div class="care-cta-row">
+    <a href="https://performance-funnel-optim-ku9r98e.gamma.site/"
+   target="_blank"
+   class="care-cta primary">
+  Präsentation ansehen
+</a>
+
+    <a href="pdfs/performance-funnel-optimization-deep-dive.pdf"
+       target="_blank"
+       class="care-cta secondary">
+      Deep Dive ansehen
+    </a>
+  </div>
+
+  <div class="case-card case-intro">
+    <h4>Einordnung</h4>
+    <p>
+      Dieses Projekt simuliert die Optimierung eines bereits laufenden Paid-Setups im D2C E-Commerce. Ziel war nicht die Entwicklung einer neuen Markenstrategie, sondern die systematische Verbesserung bestehender Performance-Kennzahlen entlang des Funnels.
+    </p>
+  </div>
+
+  <div class="case-grid">
+
+    <div class="case-card full">
+      <h4>Übersicht</h4>
+
+      <div class="mini-grid">
+        <div class="mini-panel">
+          <strong>Ziel</strong><br>
+          Skalierbarkeit eines bestehenden Paid-Funnels durch Optimierung zentraler KPIs entlang der Customer Journey.
+        </div>
+
+        <div class="mini-panel">
+          <strong>Problem</strong><br>
+          Der Funnel generierte Umsatz, verlor jedoch Effizienz durch schwache CTR, geringe Conversion Rate, niedrigen AOV und fehlende Retention.
+        </div>
+
+        <div class="mini-panel">
+          <strong>Insight</strong><br>
+          ROAS wurde als Ergebnis aus CTR, Conversion Rate und AOV analysiert. Die Probleme waren systemisch, nicht isoliert.
+        </div>
+
+        <div class="mini-panel">
+          <strong>Strategie</strong><br>
+          Hypothesengetriebene Optimierung mit klarer Funnel-Differenzierung und KPI-basierter Steuerung.
+        </div>
+
+        <div class="mini-panel">
+          <strong>Lösung</strong><br>
+          Optimierung von Creatives, Funnel-Struktur, Landingpage und Monetarisierung durch Bundles und Subscription.
+        </div>
+
+        <div class="mini-panel">
+          <strong>Ergebnis</strong><br>
+          ROAS 2,1 → 4,3<br>
+          CPA 18 € → 9 €<br>
+          AOV 32 € → 44 €
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <h4>KPI-Logik</h4>
+      <p>
+        Der Funnel wurde nicht isoliert über ROAS bewertet, sondern entlang der vorgelagerten Hebel analysiert: CTR als Relevanzsignal, Conversion Rate als Indikator für Friction und AOV als Hebel für Profitabilität und Skalierung.
+      </p>
+    </div>
+
+    <div class="case-card">
+      <h4>Steuerungslogik</h4>
+      <p>
+        Die Optimierung erfolgte entlang einer klaren Funnel-Struktur: TOFU für Aufmerksamkeit und Relevanz, MOFU für Angebotsklarheit und Vertrauen, BOFU für Abschluss, CPA und ROAS. So konnten Schwächen präziser lokalisiert und Maßnahmen gezielt priorisiert werden.
+      </p>
+    </div>
+
+    <div class="deepdive-box deepdive-box-performance full">
+      <div class="deepdive-label">Strategisches Deep Dive</div>
+
+      <h4 class="deepdive-title">
+        KPI-Diagnose, Hypothesen und Funnel-Steuerung im Detail
+      </h4>
+
+      <p class="deepdive-desc">
+        Der Deep Dive zeigt die vollständige Herleitung des Cases – vom Performance Snapshot über die Problemcluster bis hin zu Hypothesen, Funnel-Logik und Monetarisierungshebeln. Im Fokus steht die Frage, wie aus KPI-Signalen konkrete Optimierungsentscheidungen abgeleitet werden.
+      </p>
+
+      <ul class="deepdive-points">
+        <li>KPI-Logik entlang von CTR, Conversion Rate, AOV und ROAS</li>
+        <li>Problemcluster für Creative, Conversion, Funnel und Monetarisierung</li>
+        <li>TOFU-, MOFU- und BOFU-Steuerung mit klaren Aufgaben je Funnel-Stufe</li>
+        <li>CLV- und Retention-Perspektive statt reinem First-Purchase-Denken</li>
+      </ul>
+
+      <a href="pdfs/performance-funnel-optimization-deep-dive.pdf"
+         target="_blank"
+         class="deepdive-btn deepdive-btn-performance">
+        Dokument öffnen
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+      <section class="case" id="case-wordandsounds">
+        <div class="case-hero bg-word">
+          <div class="case-topline">
+            <div class="case-kicker">Case Study · Digitale Marketing-Strategie</div>
+            <div class="case-tags">
+              <span class="case-tag">Local SEO</span>
+              <span class="case-tag">Content</span>
+              <span class="case-tag">Branding</span>
+              <span class="case-tag">Pinterest</span>
+            </div>
+          </div>
+          <h3 class="case-title">WordAndSounds</h3>
+          <p class="case-summary">Strategischer Website- und SEO-Ausbau für freie Trauung & Gesang in Berlin/Brandenburg. Fokus auf Positionierung, Local SEO, Content-Cluster, Conversion-Elemente und eine moderne digitale Basis.</p>
+          <div class="case-metrics">
+            <div class="case-metric"><strong>Top 10</strong><span>Ziel für zentrale Suchbegriffe in 6 Monaten</span></div>
+            <div class="case-metric"><strong>3x</strong><span>qualifizierte Anfragen als Zielkorridor</span></div>
+            <div class="case-metric"><strong>2</strong><span>Blogbeiträge pro Monat</span></div>
+            <div class="case-metric"><strong>Local</strong><span>Berlin & Brandenburg als Fokusregion</span></div>
+          </div>
+        </div>
+
+        <div class="case-grid">
+          <div class="case-card">
+            <h4>Ausgangslage</h4>
+            <ul>
+              <li>kein einheitliches visuelles Konzept</li>
+              <li>fehlende Keywords, Metadaten und Alt-Texte</li>
+              <li>keine technische Grundlage für organisches Wachstum</li>
+              <li>Inhalte sprechen Brautpaare nicht gezielt genug an</li>
+            </ul>
+          </div>
+          <div class="case-card">
+            <h4>Strategische Schwerpunkte</h4>
+            <ul>
+              <li>Website-Relaunch mit SEO-Struktur und professionellem Branding</li>
+              <li>Blog als Traffic- und Autoritätskanal</li>
+              <li>Pinterest und Instagram als visuelle Reichweite</li>
+              <li>Kooperationsnetzwerk für Backlinks und Cross-Promotion</li>
+            </ul>
+          </div>
+          <div class="case-card full">
+            <h4>Keyword- und Seitenlogik</h4>
+            <div class="mini-grid">
+              <div class="mini-panel"><strong>Fokus-Keywords</strong> freie trauung berlin, trauredner berlin / traurednerin berlin, freie trauung brandenburg</div>
+              <div class="mini-panel"><strong>Content-Cluster</strong> Locations, Ablauf, Kosten, Musik & Gesang, Storytelling</div>
+              <div class="mini-panel"><strong>Conversion</strong> Hörbeispiele, Testimonials, FAQ, Preis- und Kontaktlogik</div>
+            </div>
+          </div>
+          <div class="case-card">
+            <h4>SEO-Hebel</h4>
+            <ul>
+              <li>klare H1-, H2- und URL-Struktur</li>
+              <li>Meta-Titel und Descriptions mit Keyword- und Nutzenlogik</li>
+              <li>Alt-Texte und Dateinamen mit lokalem Bezug</li>
+              <li>Google Search Console, Analytics und Business Profile als Grundlage</li>
+            </ul>
+          </div>
+          <div class="case-card">
+            <h4>Wirkungsidee</h4>
+            <ul>
+              <li>mehr Auffindbarkeit bei kaufnahen lokalen Suchanfragen</li>
+              <li>bessere Vertrauensbildung durch Testimonials und Video/Audio</li>
+              <li>stärkere organische Reichweite durch wiederverwertbaren Content</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    <section class="case" id="case-thegrove">
+
+  <div class="case-hero bg-grove">
+    <div class="case-topline">
+      <div class="case-kicker">
+        Case Study · Konzeptprojekt · Social Recruiting im Premium-Segment
+      </div>
+      <div class="case-tags">
+        <span class="case-tag">Social Headhunting</span>
+        <span class="case-tag">Employer Branding</span>
+        <span class="case-tag">Recruiting Funnel</span>
+        <span class="case-tag">Paid Media</span>
+      </div>
+    </div>
+
+    <h3 class="case-title">THE GROVE</h3>
+
+    <p class="case-summary">
+      Strategisches Recruiting-Konzept für einen Premium-Salon, der sich nicht über klassische Stellenanzeigen,
+      sondern über Markenführung, psychologische Zielgruppenansprache und ein systematisches Social-Headhunting-Modell
+      differenziert.
+    </p>
+
+    <div class="case-metrics">
+      <div class="case-metric"><strong>5 / Monat</strong><span>qualifizierte Bewerbungen als Primärziel</span></div>
+      <div class="case-metric"><strong>&lt; 45 Tage</strong><span>Time-to-Hire Ziel</span></div>
+      <div class="case-metric"><strong>&lt; 4.500 €</strong><span>Cost-per-Hire Ziel</span></div>
+      <div class="case-metric"><strong>4 Phasen</strong><span>Headhunting-Modell von Identification bis Invitation</span></div>
+    </div>
+  </div>
+
+  <div class="care-cta-row">
+    <a href="https://the-grove-hair-atelier-sba0hkb.gamma.site/"
+       target="_blank"
+       class="care-cta primary">
+      Präsentation ansehen
+    </a>
+
+    <a href="pdfs/grove_deep_dive.pdf"
+       target="_blank"
+       class="care-cta secondary">
+      Deep Dive ansehen
+    </a>
+  </div>
+
+  <div class="case-card case-intro">
+    <h4>Einordnung</h4>
+    <p>
+      Dieses Projekt ist ein strategisch entwickeltes Konzept auf Basis realer Recruiting- und Marktmechaniken.
+      Ziel war es, Recruiting nicht als isolierten HR-Prozess zu denken, sondern als skalierbares Wachstumssystem
+      an der Schnittstelle von Marke, Content und Conversion.
+    </p>
+  </div>
+
+  <div class="case-grid">
+
+    <div class="case-card">
+      <h4>Ausgangslage</h4>
+      <ul>
+        <li>Fachkräftemangel begrenzt Wachstum und Auslastung</li>
+        <li>klassische Recruiting-Kanäle erreichen Top-Stylisten nur unzureichend</li>
+        <li>passive Zielgruppe statt aktiv suchender Bewerber</li>
+        <li>geringe Differenzierung vieler Salons im Employer Branding</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Strategischer Hebel</h4>
+      <ul>
+        <li>Positionierung als „Safe Haven for Professionals“ statt Standard-Salon</li>
+        <li>Fokus auf Wertschätzung, Präzision und Weiterentwicklung statt Rabatt- oder Jobanzeigenlogik</li>
+        <li>Markenästhetik dient gleichzeitig als Attraction- und Selektionsfilter</li>
+      </ul>
+    </div>
+
+    <div class="case-card full">
+      <h4>Recruiting-Logik</h4>
+      <div class="mini-grid">
+        <div class="mini-panel">
+          <strong>Zielpersona</strong>
+          Senior-Stylisten mit hohem Qualitätsanspruch, starkem Fachstolz und dem Wunsch nach mehr Zeit, Anerkennung und Meisterschaft.
+        </div>
+        <div class="mini-panel">
+          <strong>Content-System</strong>
+          Ego-Trigger-Content, Technik-Fokus, Atelier-Atmosphäre und diskrete Employer-Branding-Signale statt klassischer Stellenkommunikation.
+        </div>
+        <div class="mini-panel">
+          <strong>Push-Mechanismus</strong>
+          Relevante Talente identifizieren, beobachten, über fachliche Interaktion Vertrauen aufbauen und diskret per DM ansprechen.
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <h4>Operatives Modell</h4>
+      <ul>
+        <li>4 Phasen: Identification, Observation, Interaction, Invitation</li>
+        <li>Hidden Recruiting Ads statt offensiver Jobanzeigen</li>
+        <li>Landingpage und Funnel als Ergänzung zur direkten Ansprache</li>
+        <li>Content als dauerhaft nutzbares Recruiting-Asset</li>
+      </ul>
+    </div>
+
+    <div class="case-card">
+      <h4>Business Impact</h4>
+      <ul>
+        <li>Recruiting wird direkt mit Auslastung und Umsatzlogik verknüpft</li>
+        <li>30–50 % Kundenübernahme neuer Stylisten als zentraler ROI-Hebel</li>
+        <li>Amortisation der Recruiting-Kosten modelliert innerhalb weniger Wochen</li>
+      </ul>
+    </div>
+
+    <div class="case-card full">
+      <h4>Kernaussage</h4>
+      <p>
+        THE GROVE zeigt, dass Social Recruiting dann zum Wettbewerbsvorteil wird, wenn es nicht wie Recruiting aussieht,
+        sondern wie konsequente Markenführung mit wirtschaftlicher Zielrichtung.
+      </p>
+    </div>
+<div class="deepdive-box deepdive-box-grove">
+
+  <div class="deepdive-label">
+    Strategisches Deep Dive
+  </div>
+
+  <h4 class="deepdive-title">
+    Recruiting-System, Markenlogik und Headhunting-Ansatz im Detail
+  </h4>
+
+  <p class="deepdive-desc">
+    Dieses Dokument zeigt die vollständige strategische Herleitung des Recruiting-Ansatzes –
+    von der psychologischen Zielgruppenanalyse über die Positionierung als Premium-Arbeitgeber
+    bis hin zum operativen Social-Headhunting-Modell. Im Fokus steht, wie Recruiting als
+    skalierbares System an der Schnittstelle von Marke, Content und Conversion gedacht wird.
+  </p>
+
+  <ul class="deepdive-points">
+    <li>4-Phasen-Headhunting-Modell (Identification bis Invitation)</li>
+    <li>psychologische Zielgruppenlogik für passive Talente</li>
+    <li>Employer Branding als Selektions- und Attraction-Mechanismus</li>
+    <li>Verknüpfung von Recruiting, Auslastung und Umsatzlogik</li>
+  </ul>
+
+  <a href="pdfs/grove_deep_dive.pdf"
+     target="_blank"
+     class="deepdive-btn deepdive-btn-grove">
+    Dokument öffnen
+  </a>
+
+</div>
+
+  </div>
+</section>
+
+<section class="case" id="case-petcommerce">
+
+  <div class="case-hero bg-pet">
+    <div class="case-topline">
+      <span class="case-kicker">E-Commerce · D2C · Geschäftsmodell</span>
+      <div class="case-tags">
+        <span class="case-tag">Subscription</span>
+        <span class="case-tag">Retention</span>
+        <span class="case-tag">Brand</span>
+      </div>
+    </div>
+
+    <h2 class="case-title">Vom Produktshop zum skalierbaren D2C-System</h2>
+
+    <p class="case-summary">
+Aufbau eines skalierbaren D2C-Ökosystems im Pet-Commerce – mit Fokus auf Customer Lifetime Value, datenbasierte Personalisierung und Subscription als Wachstumstreiber.
+    </p>
+
+    <div class="case-metrics">
+      <div class="case-metric">
+        <strong>Abo-first</strong>
+        <span>Wiederkehrende Umsätze als Kernstrategie</span>
+      </div>
+      <div class="case-metric">
+        <strong>CLV Fokus</strong>
+        <span>Kundenwert statt Einzeltransaktionen</span>
+      </div>
+      <div class="case-metric">
+        <strong>Retention</strong>
+        <span>Bindung durch Personalisierung</span>
+      </div>
+      <div class="case-metric">
+        <strong>Upsell</strong>
+        <span>Bundles & Cross-Selling</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="care-cta-row">
+  <a href="https://aufbau-eines-skalierbare-ehe8ib9.gamma.site/"
+     target="_blank"
+     class="care-cta primary">
+    Strategie ansehen
+  </a>
+
+  <a href="pdfs/pawly_strategie.pdf"
+     target="_blank"
+     class="care-cta secondary">
+    Deep Dive ansehen
+  </a>
+</div>
+
+  <div class="case-grid">
+
+    <div class="case-card case-intro full">
+      <h4>Einordnung</h4>
+      <p>
+        Dieses Projekt ist ein strategisch entwickeltes Konzept auf Basis realer Marktmechaniken
+        im D2C- und E-Commerce-Umfeld. Ziel war es, die strukturellen Schwächen klassischer
+        Online-Shops im Heimtiermarkt zu adressieren und ein skalierbares System zu modellieren,
+        das wiederkehrende Umsätze, höhere Kundenbindung und stärkere Unabhängigkeit von Paid
+        Traffic ermöglicht.
+      </p>
+    </div>
+
+    <div class="case-card">
+      <h4>Ausgangslage</h4>
+      <p>
+        Klassische D2C-Modelle im Pet-Bereich stoßen zunehmend an ihre Grenzen: steigende Akquisitionskosten, geringe Differenzierung und fehlende Kundenbindung. Wachstum wird teuer und kurzfristig.
+      </p>
+      <p>
+        Ziel dieses Cases war die Entwicklung eines Systems, das nicht auf Einzeltransaktionen basiert, sondern auf langfristigem Kundenwert.
+      </p>
+    </div>
+
+    <div class="case-card">
+      <h4>Ziel</h4>
+      <p>
+Aufbau eines skalierbaren Growth-Systems mit klarer wirtschaftlicher Logik:<br>
+
+• Steigerung des Customer Lifetime Value<br>
+• Reduktion der Abhängigkeit von Paid Traffic<br>
+• Etablierung wiederkehrender Umsätze durch Subscription<br>
+• Entwicklung eines datengetriebenen Kundenverständnisses
+      </p>
+    </div>
+
+<div class="case-card full">
+  <h4>Lösungsansatz</h4>
+
+  <p>
+    <strong>ROAS wurde nicht isoliert betrachtet, sondern als Systemergebnis aus drei zentralen Hebeln:</strong>
+    Relevanz, Conversion und Monetarisierung.
+  </p>
+
+  <div class="mini-grid">
+    <div class="mini-panel">
+      <strong>1. Relevanz erhöhen</strong>
+      <ul>
+        <li>UGC-basierte Creatives statt generischer Produktdarstellung</li>
+        <li>Fokus auf Hook Rate statt nur auf CTR</li>
+        <li>Systematisches Creative Testing mit klaren Hypothesen</li>
+      </ul>
+    </div>
+
+    <div class="mini-panel">
+      <strong>2. Conversion verbessern</strong>
+      <ul>
+        <li>Klare Hero-Kommunikation auf der Landingpage</li>
+        <li>Integration von Trust-Elementen und Social Proof</li>
+        <li>Strukturierte Angebotsdarstellung zur Reduktion von Friction</li>
+      </ul>
+    </div>
+
+    <div class="mini-panel">
+      <strong>3. Monetarisierung ausbauen</strong>
+      <ul>
+        <li>Bundle-Logik zur Steigerung des AOV</li>
+        <li>Subscription als primäres Angebot statt Add-on</li>
+        <li>Fokus auf Wiederkaufsstruktur und Customer Lifetime Value</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="case-card">
+  <h4>Key Insight</h4>
+  <p>
+    Der größte Hebel lag nicht im Creative oder im Incentive, sondern in der systemischen Verknüpfung aller Funnel-Stufen.
+  </p>
+  <ul>
+    <li>ROAS entsteht aus dem Zusammenspiel von CTR, Conversion Rate und AOV – nicht aus Einzelmaßnahmen</li>
+    <li>Schwächen im Funnel verstärken sich gegenseitig und müssen ganzheitlich betrachtet werden</li>
+    <li>Erst durch die klare Positionierung von Subscription und Bundle-Logik wurde der Funnel skalierbar</li>
+  </ul>
+</div>
+
+<div class="case-card">
+  <h4>Fazit</h4>
+  <p>
+    Die Optimierung des Funnels führte nicht nur zu besseren KPIs, sondern zu einer strukturellen Verbesserung der gesamten Wachstumslogik.
+  </p>
+  <ul>
+    <li>Relevanz steigern → mehr qualifizierter Traffic bei gleichem Budget</li>
+    <li>Conversion verbessern → geringere Reibung und höhere Abschlussraten</li>
+    <li>Monetarisierung erhöhen → mehr Wert pro Kunde und größerer Spielraum für Akquisition</li>
+    <li>Nachhaltiges Wachstum entsteht erst durch die Kombination aller drei Hebel</li>
+  </ul>
+</div>
+<div class="deepdive-box deepdive-box-pet">
+
+  <div class="deepdive-label">Strategisches Deep Dive</div>
+
+  <h4 class="deepdive-title">
+    Vollständige D2C- und Skalierungslogik im Detail
+  </h4>
+
+<p class="deepdive-desc">
+  Der Deep Dive zeigt, wie aus einem klassischen Online-Shop ein
+  skalierbares D2C-System entwickelt wird – mit klarer Logik hinter
+  Umsatzstruktur, Retention-Mechaniken und Customer Lifetime Value.
+  Im Fokus steht die Frage, wie nachhaltiges Wachstum entsteht,
+  wenn Geschäftsmodell, Marke und Performance konsequent zusammen gedacht werden.
+</p>
+
+  <ul class="deepdive-points">
+    <li>Geschäftsmodell mit Shop, Abo und Upsell-Logik</li>
+    <li>Customer Journey vom Erstkauf bis zur langfristigen Bindung</li>
+    <li>CLV-orientierte Denkweise statt reiner Einzeltransaktion</li>
+    <li>Retention, Personalisierung und Markenaufbau als Wachstumstreiber</li>
+  </ul>
+
+  <a href="pdfs/pawly_strategie.pdf"
+     target="_blank"
+     class="deepdive-btn deepdive-btn-pet">
+    Dokument öffnen
+  </a>
+
+</div>
+<div class="deepdive-box deepdive-box-pet">
+
+  <div class="deepdive-label">Operativer Case</div>
+
+        <h4 class="deepdive-title">
+          Funnel & Revenue Optimization im Detail
+        </h4>
+
+        <p class="deepdive-desc">
+          Aufbauend auf der strategischen Logik zeigt dieser Case die konkrete Umsetzung im Paid Funnel: von der Analyse bestehender KPIs bis zur systematischen Optimierung entlang von Relevanz, Conversion und Monetarisierung. Im Fokus steht, wie aus isolierten Maßnahmen ein skalierbares Performance-System entsteht.
+        </p>
+
+        <ul class="deepdive-points">
+          <li>Analyse eines bestehenden Paid Funnels anhand zentraler KPIs</li>
+          <li>Optimierung von CTR, Conversion Rate und AOV als zusammenhängendes System</li>
+          <li>Einführung von Bundle-Logik und Subscription als Umsatzhebel</li>
+          <li>Strukturierte Testing-Ansätze statt Trial & Error</li>
+        </ul>
+
+        <button type="button"
+                class="deepdive-btn deepdive-btn-pet"
+                data-open="petoptimization">
+          Case ansehen
+        </button>
+
+</div>
+
+  </div>
+
+  
+</section>
+
+      </div><!-- /.modal-body -->
+
+      <div class="case-footer-actions">
+        <div>
+          <p class="case-nav-label">Weitere Cases</p>
+          <div class="modal-nav">
+            <button data-open="petcommerce">PAWLY D2C Growth System</button>
+            <button data-open="petoptimization">PAWLY Funnel Optimization</button>
+            <button data-open="carelingua">CareLingua</button>
+            <button data-open="thegrove">THE GROVE</button>
+            <button data-open="paola">PAOLA KUBES</button>
+            <button data-open="wordandsounds">WordAndSounds</button>
+          </div>
+        </div>
+
+        <div class="case-footer-bottom">
+          <div class="case-switch">
+            <button class="case-switch-btn" id="prevCase" type="button">← Vorheriger Case</button>
+            <button class="case-switch-btn" id="nextCase" type="button">Nächster Case →</button>
+          </div>
+
+          <button class="btn btn-secondary" id="closeBottom" type="button">Zur Übersicht zurück</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const closeBottom = document.getElementById('closeBottom');
+    const prevCase = document.getElementById('prevCase');
+    const nextCase = document.getElementById('nextCase');
+    const currentCaseLabel = document.getElementById('currentCaseLabel');
+    const caseSections = document.querySelectorAll('.case');
+    const modalCard = document.querySelector('.modal-card');
+    const modalBody = document.querySelector('.modal-body');
+
+    const caseOrder = [
+      'petcommerce',
+      'petoptimization',
+      'carelingua',
+      'thegrove',
+      'paola',
+      'wordandsounds'
+    ];
+
+    const caseLabels = {
+      petcommerce: 'PAWLY D2C Growth System',
+      petoptimization: 'PAWLY Funnel Optimization',
+      carelingua: 'CareLingua',
+      thegrove: 'THE GROVE',
+      paola: 'PAOLA KUBES',
+      wordandsounds: 'WordAndSounds'
+    };
+
+    let currentIndex = 0;
+
+    function updateCaseNav(id) {
+      document.querySelectorAll('.modal-nav [data-open]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.open === id);
+      });
+
+      if (currentCaseLabel) {
+        currentCaseLabel.textContent = caseLabels[id] || id;
+      }
+    }
+
+    function showCase(id) {
+      if (!caseOrder.includes(id)) return;
+
+      currentIndex = caseOrder.indexOf(id);
+      caseSections.forEach(section => section.classList.remove('active'));
+
+      const active = document.getElementById(`case-${id}`);
+      if (active) active.classList.add('active');
+
+      updateCaseNav(id);
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+
+      if (modalBody) modalBody.scrollTop = 0;
+    }
+
+    function hideModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-open]').forEach(btn => {
+      btn.addEventListener('click', () => showCase(btn.dataset.open));
+    });
+
+    if (prevCase) {
+      prevCase.addEventListener('click', () => {
+        const prev = (currentIndex - 1 + caseOrder.length) % caseOrder.length;
+        showCase(caseOrder[prev]);
+      });
+    }
+
+    if (nextCase) {
+      nextCase.addEventListener('click', () => {
+        const next = (currentIndex + 1) % caseOrder.length;
+        showCase(caseOrder[next]);
+      });
+    }
+
+    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (closeBottom) closeBottom.addEventListener('click', hideModal);
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) hideModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') hideModal();
+      if (e.key === 'ArrowLeft' && prevCase) prevCase.click();
+      if (e.key === 'ArrowRight' && nextCase) nextCase.click();
+    });
+
+    updateCaseNav(caseOrder[currentIndex]);
+  </script>
+</body>
+</html>
