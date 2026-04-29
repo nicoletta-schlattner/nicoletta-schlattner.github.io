@@ -1501,6 +1501,49 @@ footer {
   align-items: flex-start;
   gap: 20px;
 }
+  .case {
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.case.swipe-left {
+  transform: translateX(-28px);
+  opacity: 0;
+}
+
+.case.swipe-right {
+  transform: translateX(28px);
+  opacity: 0;
+}
+
+.case.swipe-in-right {
+  animation: swipeInRight 220ms ease;
+}
+
+.case.swipe-in-left {
+  animation: swipeInLeft 220ms ease;
+}
+
+@keyframes swipeInRight {
+  from {
+    transform: translateX(28px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes swipeInLeft {
+  from {
+    transform: translateX(-28px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
   }
 </style>
 </head>
@@ -3026,29 +3069,57 @@ Aufbau eines skalierbaren Growth-Systems mit klarer wirtschaftlicher Logik:<br>
     }
   });
 
-  /* Mobile Swipe Navigation für Case Studies */
-  if (window.innerWidth <= 820 && modalCard) {
-    let startX = 0;
-    let endX = 0;
+ /* Mobile Swipe Navigation mit Animation */
+if (window.innerWidth <= 820 && modalBody) {
+  let startX = 0;
+  let startY = 0;
 
-    modalCard.addEventListener('touchstart', (event) => {
-      startX = event.changedTouches[0].screenX;
-    });
+  modalBody.addEventListener('touchstart', (event) => {
+    startX = event.changedTouches[0].screenX;
+    startY = event.changedTouches[0].screenY;
+  });
 
-    modalCard.addEventListener('touchend', (event) => {
-      endX = event.changedTouches[0].screenX;
+  modalBody.addEventListener('touchend', (event) => {
+    const endX = event.changedTouches[0].screenX;
+    const endY = event.changedTouches[0].screenY;
 
-      const threshold = 60;
+    const diffX = startX - endX;
+    const diffY = startY - endY;
+    const threshold = 60;
 
-      if (startX - endX > threshold) {
-        showNextCase();
-      }
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > threshold) {
+      animateSwipe(diffX > 0 ? 'next' : 'prev');
+    }
+  });
+}
 
-      if (endX - startX > threshold) {
-        showPreviousCase();
-      }
-    });
-  }
+function animateSwipe(direction) {
+  const activeCase = document.querySelector('.case.active');
+  if (!activeCase) return;
+
+  activeCase.classList.add(direction === 'next' ? 'swipe-left' : 'swipe-right');
+
+  setTimeout(() => {
+    if (direction === 'next') {
+      showNextCase();
+    } else {
+      showPreviousCase();
+    }
+
+    const newActiveCase = document.querySelector('.case.active');
+    if (newActiveCase) {
+      newActiveCase.classList.add(direction === 'next' ? 'swipe-in-right' : 'swipe-in-left');
+
+      setTimeout(() => {
+        newActiveCase.classList.remove('swipe-in-right', 'swipe-in-left');
+      }, 220);
+    }
+  }, 180);
+
+  setTimeout(() => {
+    activeCase.classList.remove('swipe-left', 'swipe-right');
+  }, 220);
+}
 
   updateCaseNav(caseOrder[currentIndex]);
 </script>
