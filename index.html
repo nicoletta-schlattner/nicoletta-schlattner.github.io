@@ -1408,74 +1408,57 @@ footer {
   padding: 4px;
 }
 
+/* ===== CASE STUDY MOBILE OPTIMIZATION ===== */
+
+.modal {
+  padding: 0;
+  align-items: stretch;
+}
+
 .modal-card {
-  height: 96vh;
-  max-height: 96vh;
-  border-radius: 14px;
-}
-
-.modal-nav button,
-.modal-nav a {
-  font-size: 0.8rem;
-  padding: 8px 10px;
-  flex: 1;
-  min-width: 0;
-  text-align: center;
-}
-  .case-footer-actions { align-items: flex-start; }
-  .modal-header { padding: 12px 14px; }
-  .modal-label { display: none; }
-  .case-footer-bottom { align-items: stretch; }
-  .case-switch { width: 100%; }
-  .case-switch-btn { flex: 1; min-width: 0; }
-
-
-  .nav-cta { display: none; }
-
-  .wrap { width: min(var(--max), calc(100% - 24px)); }
-
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-  .modal-nav {
-  flex-direction: column;
-  gap: 8px;
-}
-
-.modal-nav button,
-.case-switch-btn {
   width: 100%;
-  text-align: center;
+  height: 100dvh;
+  max-height: 100dvh;
+  border-radius: 0;
+  touch-action: pan-y;
 }
-  .modal-nav {
-  margin-top: 8px;
-}
-  /* ===== CASE STUDY MOBILE OPTIMIZATION ===== */
 
 .modal-header {
   position: static;
+  padding: 10px 12px;
 }
 
-/* obere Case-Auswahl komplett ausblenden */
-.modal-nav {
+.modal-label {
   display: none;
 }
 
+/* obere Case-Auswahl ausblenden */
+.modal-nav,
 .case-switch {
   display: none;
 }
 
-/* untere Navigation (Zurück / Vorher / Nächster) optimieren */
+/* Content-Bereich maximal groß machen */
+.modal-body {
+  max-height: none;
+  height: calc(100dvh - 130px);
+  overflow-y: auto;
+}
+
+/* Case-Inhalt kompakter */
+.case {
+  padding: 14px 12px 20px;
+}
+
+/* untere Navigation behalten & sauber stapeln */
 .case-footer-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
+  padding: 10px 12px;
 }
 
-/* Buttons sauber & klickbar */
 .case-footer-actions button,
 .case-footer-actions a {
   width: 100%;
@@ -1484,23 +1467,10 @@ footer {
   font-size: 0.9rem;
 }
 
-/* visuelle Hierarchie */
 .case-footer-actions a:first-child {
   font-weight: 500;
 }
-  .modal-card {
-  height: 94vh;
-  max-height: 94vh;
-  border-radius: 16px;
-}
-
-.case {
-  padding: 18px 16px 24px;
-}
-  .modal-card {
-  touch-action: pan-y;
-}
-}
+  }
 </style>
 </head>
 <body>
