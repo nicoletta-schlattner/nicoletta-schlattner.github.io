@@ -2896,103 +2896,157 @@ Aufbau eines skalierbaren Growth-Systems mit klarer wirtschaftlicher Logik:<br>
     </div>
   </div>
 
-  <script>
-    const modal = document.getElementById('modal');
-    const closeModal = document.getElementById('closeModal');
-    const closeBottom = document.getElementById('closeBottom');
-    const prevCase = document.getElementById('prevCase');
-    const nextCase = document.getElementById('nextCase');
-    const currentCaseLabel = document.getElementById('currentCaseLabel');
-    const caseSections = document.querySelectorAll('.case');
-    const modalCard = document.querySelector('.modal-card');
-    const modalBody = document.querySelector('.modal-body');
+<script>
+  const modal = document.getElementById('modal');
+  const closeModal = document.getElementById('closeModal');
+  const closeBottom = document.getElementById('closeBottom');
+  const prevCase = document.getElementById('prevCase');
+  const nextCase = document.getElementById('nextCase');
+  const currentCaseLabel = document.getElementById('currentCaseLabel');
+  const caseSections = document.querySelectorAll('.case');
+  const modalCard = document.querySelector('.modal-card');
+  const modalBody = document.querySelector('.modal-body');
 
-    const caseOrder = [
-      'petcommerce',
-      'petoptimization',
-      'carelingua',
-      'thegrove',
-      'paola',
-      'wordandsounds'
-    ];
+  const caseOrder = [
+    'petcommerce',
+    'petoptimization',
+    'carelingua',
+    'thegrove',
+    'paola',
+    'wordandsounds'
+  ];
 
-    const caseLabels = {
-      petcommerce: 'D2C PET BRAND – D2C Growth System',
-      petoptimization: 'D2C PET BRAND – Funnel Optimization',
-      carelingua: 'CareLingua',
-      thegrove: 'THE GROVE',
-      paola: 'PAOLA KUBES',
-      wordandsounds: 'WordAndSounds'
-    };
+  const caseLabels = {
+    petcommerce: 'D2C PET BRAND – D2C Growth System',
+    petoptimization: 'D2C PET BRAND – Funnel Optimization',
+    carelingua: 'CareLingua',
+    thegrove: 'THE GROVE',
+    paola: 'PAOLA KUBES',
+    wordandsounds: 'WordAndSounds'
+  };
 
-    let currentIndex = 0;
+  let currentIndex = 0;
 
-    function updateCaseNav(id) {
-      document.querySelectorAll('.modal-nav [data-open]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.open === id);
-      });
+  function updateCaseNav(id) {
+    document.querySelectorAll('.modal-nav [data-open]').forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.open === id);
+    });
 
-      if (currentCaseLabel) {
-        currentCaseLabel.textContent = caseLabels[id] || id;
+    if (currentCaseLabel) {
+      currentCaseLabel.textContent = caseLabels[id] || id;
+    }
+  }
+
+  function showCase(id) {
+    if (!caseOrder.includes(id)) return;
+
+    currentIndex = caseOrder.indexOf(id);
+
+    caseSections.forEach((section) => {
+      section.classList.remove('active');
+    });
+
+    const activeCase = document.getElementById(`case-${id}`);
+    if (activeCase) {
+      activeCase.classList.add('active');
+    }
+
+    updateCaseNav(id);
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    if (modalBody) {
+      modalBody.scrollTop = 0;
+    }
+  }
+
+  function hideModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function showPreviousCase() {
+    const previousIndex = (currentIndex - 1 + caseOrder.length) % caseOrder.length;
+    showCase(caseOrder[previousIndex]);
+  }
+
+  function showNextCase() {
+    const nextIndex = (currentIndex + 1) % caseOrder.length;
+    showCase(caseOrder[nextIndex]);
+  }
+
+  document.querySelectorAll('[data-open]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      showCase(btn.dataset.open);
+    });
+  });
+
+  if (prevCase) {
+    prevCase.addEventListener('click', showPreviousCase);
+  }
+
+  if (nextCase) {
+    nextCase.addEventListener('click', showNextCase);
+  }
+
+  if (closeModal) {
+    closeModal.addEventListener('click', hideModal);
+  }
+
+  if (closeBottom) {
+    closeBottom.addEventListener('click', hideModal);
+  }
+
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      hideModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (!modal.classList.contains('open')) return;
+
+    if (event.key === 'Escape') {
+      hideModal();
+    }
+
+    if (event.key === 'ArrowLeft') {
+      showPreviousCase();
+    }
+
+    if (event.key === 'ArrowRight') {
+      showNextCase();
+    }
+  });
+
+  /* Mobile Swipe Navigation für Case Studies */
+  if (window.innerWidth <= 820 && modalCard) {
+    let startX = 0;
+    let endX = 0;
+
+    modalCard.addEventListener('touchstart', (event) => {
+      startX = event.changedTouches[0].screenX;
+    });
+
+    modalCard.addEventListener('touchend', (event) => {
+      endX = event.changedTouches[0].screenX;
+
+      const threshold = 60;
+
+      if (startX - endX > threshold) {
+        showNextCase();
       }
-    }
 
-    function showCase(id) {
-      if (!caseOrder.includes(id)) return;
-
-      currentIndex = caseOrder.indexOf(id);
-      caseSections.forEach(section => section.classList.remove('active'));
-
-      const active = document.getElementById(`case-${id}`);
-      if (active) active.classList.add('active');
-
-      updateCaseNav(id);
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-
-      if (modalBody) modalBody.scrollTop = 0;
-    }
-
-    function hideModal() {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('[data-open]').forEach(btn => {
-      btn.addEventListener('click', () => showCase(btn.dataset.open));
+      if (endX - startX > threshold) {
+        showPreviousCase();
+      }
     });
+  }
 
-    if (prevCase) {
-      prevCase.addEventListener('click', () => {
-        const prev = (currentIndex - 1 + caseOrder.length) % caseOrder.length;
-        showCase(caseOrder[prev]);
-      });
-    }
-
-    if (nextCase) {
-      nextCase.addEventListener('click', () => {
-        const next = (currentIndex + 1) % caseOrder.length;
-        showCase(caseOrder[next]);
-      });
-    }
-
-    if (closeModal) closeModal.addEventListener('click', hideModal);
-    if (closeBottom) closeBottom.addEventListener('click', hideModal);
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) hideModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (!modal.classList.contains('open')) return;
-      if (e.key === 'Escape') hideModal();
-      if (e.key === 'ArrowLeft' && prevCase) prevCase.click();
-      if (e.key === 'ArrowRight' && nextCase) nextCase.click();
-    });
-
-    updateCaseNav(caseOrder[currentIndex]);
-  </script>
+  updateCaseNav(caseOrder[currentIndex]);
+</script>
 </body>
 </html>
