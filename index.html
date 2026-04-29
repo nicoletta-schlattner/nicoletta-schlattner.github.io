@@ -1450,6 +1450,42 @@ footer {
   .modal-nav {
   margin-top: 8px;
 }
+  /* ===== CASE STUDY MOBILE OPTIMIZATION ===== */
+
+.modal-header {
+  position: static;
+}
+
+/* obere Case-Auswahl komplett ausblenden */
+.modal-nav {
+  display: none;
+}
+
+.case-switch {
+  display: none;
+}
+
+/* untere Navigation (Zurück / Vorher / Nächster) optimieren */
+.case-footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Buttons sauber & klickbar machen */
+.case-footer-actions button,
+.case-footer-actions a {
+  width: 100%;
+  text-align: center;
+  padding: 12px 14px;
+  font-size: 0.9rem;
+}
+
+/* optional: etwas visuelle Hierarchie */
+.case-footer-actions a:first-child {
+  font-weight: 500;
+}
 }
 </style>
 </head>
