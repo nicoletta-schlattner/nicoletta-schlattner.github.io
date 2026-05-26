@@ -1333,24 +1333,25 @@ footer {
 .profile-image-wrapper {
   display: flex;
   justify-content: center;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 
-.profile-image-placeholder {
+.profile-image {
   width: 200px;
   height: 200px;
+  object-fit: cover;
+  object-position: center top;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(237,211,130,0.07);
+
   border: 2px solid rgba(237,211,130,0.18);
-  box-shadow: 0 12px 40px rgba(2,1,34,0.70), 0 0 0 6px rgba(237,211,130,0.05);
-  color: rgba(255,255,255,0.50);
-  font-size: 0.82rem;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
+
+  box-shadow:
+    0 12px 40px rgba(2,1,34,0.70),
+    0 0 0 6px rgba(237,211,130,0.05);
+
+  display: block;
 }
+
     .legal-section {
   padding-top: 30px;
   padding-bottom: 20px;
@@ -1634,9 +1635,10 @@ footer {
           <div class="hero-panel about-panel">
 
 <div class="profile-image-wrapper">
-  <div class="profile-image-placeholder">
-    <span>Foto</span>
-  </div>
+  <img
+    src="assets/images/portrait_nicoletta.png"
+    class="profile-image"
+  >
 </div>
 
   <div class="about-badge">About</div>
