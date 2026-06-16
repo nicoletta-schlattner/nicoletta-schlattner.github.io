@@ -173,6 +173,103 @@ a { color: inherit; }
 
 .nav-links a:hover { color: var(--accent); }
 
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown summary {
+  list-style: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.60);
+  font-size: 0.92rem;
+  transition: color 180ms ease;
+  user-select: none;
+}
+
+.nav-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-dropdown summary:hover,
+.nav-dropdown[open] summary {
+  color: var(--accent);
+}
+
+.nav-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  min-width: 310px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(7,4,46,0.98);
+  border: 1px solid rgba(252,158,79,0.20);
+  box-shadow: 0 20px 55px rgba(0,0,0,0.38);
+  display: grid;
+  gap: 12px;
+  z-index: 1000;
+}
+
+.nav-dropdown-panel::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 22px;
+  width: 14px;
+  height: 14px;
+  background: rgba(7,4,46,0.98);
+  border-left: 1px solid rgba(252,158,79,0.20);
+  border-top: 1px solid rgba(252,158,79,0.20);
+  transform: rotate(45deg);
+}
+
+.dropdown-group {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(252,158,79,0.10);
+}
+
+.dropdown-group:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.dropdown-heading {
+  font-family: 'Alata', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.dropdown-item {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: rgba(255,255,255,0.68);
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.35;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.dropdown-item:hover {
+  color: var(--accent-2);
+  transform: translateX(3px);
+}
+
+.dropdown-all {
+  color: rgba(255,255,255,0.80) !important;
+  font-family: 'Alata', sans-serif;
+  font-size: 0.82rem !important;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(252,158,79,0.10);
+}
+
 .nav-cta {
   text-decoration: none;
   border: 1.5px solid var(--accent);
@@ -1490,8 +1587,24 @@ footer {
   font-size: 0.8rem;
 }
 
-.nav-links a {
+.nav-links a,
+.nav-dropdown summary {
   font-size: 0.78rem;
+}
+
+.nav-dropdown-panel {
+  position: fixed;
+  top: 58px;
+  left: 12px;
+  right: 12px;
+  min-width: 0;
+  max-height: calc(100dvh - 76px);
+  overflow-y: auto;
+  padding: 14px;
+}
+
+.dropdown-item {
+  font-size: 0.84rem;
 }
 
   .hero-grid,
@@ -1726,7 +1839,35 @@ footer {
         <span class="brand-bottom">Strategie, SEO & digitale Umsetzung</span>
       </a>
       <div class="nav-links">
-        <a href="#projekte">Projekte</a>
+        <details class="nav-dropdown">
+          <summary>Projekte ▾</summary>
+          <div class="nav-dropdown-panel">
+            <a class="dropdown-all" href="#projekte">Alle Projekte ansehen</a>
+
+            <div class="dropdown-group">
+              <span class="dropdown-heading">Growth & Strategy</span>
+              <button class="dropdown-item" type="button" data-open="b2b-demand-revenue">B2B Demand & Revenue System</button>
+              <button class="dropdown-item" type="button" data-open="petcommerce">D2C Pet Brand · Growth System</button>
+            </div>
+
+            <div class="dropdown-group">
+              <span class="dropdown-heading">Performance Marketing</span>
+              <button class="dropdown-item" type="button" data-open="petoptimization">D2C Pet Brand · Funnel Optimization</button>
+              <button class="dropdown-item" type="button" data-open="carelingua">CareLingua · Full-Funnel Lead Generation</button>
+            </div>
+
+            <div class="dropdown-group">
+              <span class="dropdown-heading">Social Recruiting</span>
+              <button class="dropdown-item" type="button" data-open="thegrove">THE GROVE · Social Recruiting System</button>
+            </div>
+
+            <div class="dropdown-group">
+              <span class="dropdown-heading">SEO & Digital Growth</span>
+              <button class="dropdown-item" type="button" data-open="wordandsounds">WordAndSounds · Local SEO Strategy</button>
+              <button class="dropdown-item" type="button" data-open="paola">Paola Kubes · Digital Growth Strategy</button>
+            </div>
+          </div>
+        </details>
         <a href="#denkweise">Denkweise</a>
         <a href="#prozess">Prozess</a>
         <a href="#kontakt">Kontakt</a>
@@ -2347,7 +2488,6 @@ Operative Optimierung eines D2C Paid-Funnels entlang von CTR, Conversion Rate, A
 </div>
 
 <div class="modal-body">
-      <div class="modal-body">
 
       <section class="case active" id="case-paola">
   <div class="case-hero bg-paola">
@@ -3556,6 +3696,17 @@ const caseLabels = {
   document.querySelectorAll('[data-open]').forEach((btn) => {
     btn.addEventListener('click', () => {
       showCase(btn.dataset.open);
+      document.querySelectorAll('.nav-dropdown[open]').forEach((dropdown) => {
+        dropdown.removeAttribute('open');
+      });
+    });
+  });
+
+  document.addEventListener('click', (event) => {
+    document.querySelectorAll('.nav-dropdown[open]').forEach((dropdown) => {
+      if (!dropdown.contains(event.target)) {
+        dropdown.removeAttribute('open');
+      }
     });
   });
 
