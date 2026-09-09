@@ -3,7 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio – Strategie, SEO & digitale Umsetzung</title>
+  <title>Nicoletta Schlattner | SEO, Performance Marketing & digitale Strategie</title>
+  <meta
+    name="description"
+    content="Portfolio von Nicoletta Schlattner mit Case Studies zu SEO, Performance Marketing, Funnel-Strategie, Lead Generation und digitaler Umsetzung."
+  />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://nicoletta-schlattner.github.io/" />
+
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nicoletta Schlattner Portfolio" />
+  <meta property="og:title" content="Nicoletta Schlattner | SEO, Performance Marketing & digitale Strategie" />
+  <meta
+    property="og:description"
+    content="Strategische Case Studies zu SEO, Performance Marketing, Lead Generation, Funnel-Optimierung und digitalem Wachstum."
+  />
+  <meta property="og:url" content="https://nicoletta-schlattner.github.io/" />
+  <meta property="og:image" content="https://nicoletta-schlattner.github.io/assets/images/portrait_nicoletta_v2.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nicoletta Schlattner | SEO, Performance Marketing & digitale Strategie" />
+  <meta
+    name="twitter:description"
+    content="Portfolio mit Case Studies zu SEO, Performance Marketing, Funnel-Strategie und digitaler Umsetzung."
+  />
+  <meta name="twitter:image" content="https://nicoletta-schlattner.github.io/assets/images/portrait_nicoletta_v2.jpg" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Nicoletta Schlattner",
+      "url": "https://nicoletta-schlattner.github.io/",
+      "image": "https://nicoletta-schlattner.github.io/assets/images/portrait_nicoletta_v2.jpg",
+      "jobTitle": "Digital Marketing & E-Commerce Spezialistin",
+      "knowsAbout": [
+        "SEO",
+        "Performance Marketing",
+        "Funnel Strategy",
+        "Lead Generation",
+        "Digital Strategy",
+        "E-Commerce"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/nicoletta-schlattner-640264370"
+      ]
+    }
+  </script>
 
 
   <!-- Cookiebot -->
@@ -1923,9 +1970,12 @@ footer {
         <a href="#prozess">Prozess</a>
         <a href="#kontakt">Kontakt</a>
         <a
-href="https://www.linkedin.com/in/nicoletta-schlattner-640264370"
-target="_blank"
-rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/nicoletta-schlattner-640264370"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
       </div>
       <a class="nav-cta" href="mailto:nicoletta.schlattner@gmail.com">Kontakt aufnehmen →</a>
     </div>
@@ -2019,12 +2069,6 @@ Wer heute digital bestehen will, braucht keine Einzelmaßnahmen, sondern ein Sys
         </div>
       </div>
     </section>
-
- 
-
-  </div>
-</section>
-
 
     <section class="section" id="projekte">
       <div class="wrap">
@@ -3677,6 +3721,8 @@ Aufbau eines skalierbaren Growth-Systems mit klarer wirtschaftlicher Logik:<br>
   const caseSections = document.querySelectorAll('.case');
   const modalCard = document.querySelector('.modal-card');
   const modalBody = document.querySelector('.modal-body');
+  let lastActiveElement = null;
+  let isSyncingHash = false;
 
 const caseOrder = [
   'petcommerce',
@@ -3700,6 +3746,26 @@ const caseLabels = {
 
   let currentIndex = 0;
 
+  function caseIdFromHash(hash) {
+    const normalizedHash = hash.replace(/^#/, '');
+
+    if (normalizedHash.startsWith('case-')) {
+      return normalizedHash.replace(/^case-/, '');
+    }
+
+    return caseOrder.includes(normalizedHash) ? normalizedHash : null;
+  }
+
+  function setCaseHash(id) {
+    const nextHash = `case-${id}`;
+
+    if (window.location.hash.replace(/^#/, '') === nextHash) return;
+
+    isSyncingHash = true;
+    window.history.pushState(null, '', `#${nextHash}`);
+    isSyncingHash = false;
+  }
+
   function updateCaseNav(id) {
     document.querySelectorAll('.modal-nav [data-open]').forEach((btn) => {
       btn.classList.toggle('active', btn.dataset.open === id);
@@ -3710,10 +3776,11 @@ const caseLabels = {
     }
   }
 
-  function showCase(id) {
+  function showCase(id, options = {}) {
     if (!caseOrder.includes(id)) return;
 
     currentIndex = caseOrder.indexOf(id);
+    lastActiveElement = document.activeElement;
 
     caseSections.forEach((section) => {
       section.classList.remove('active');
@@ -3733,12 +3800,24 @@ const caseLabels = {
     if (modalBody) {
       modalBody.scrollTop = 0;
     }
+
+    if (!options.skipHashUpdate) {
+      setCaseHash(id);
+    }
   }
 
   function hideModal() {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+
+    if (window.location.hash.startsWith('#case-')) {
+      window.history.pushState(null, '', window.location.pathname + window.location.search);
+    }
+
+    if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+      lastActiveElement.focus();
+    }
   }
 
   function showPreviousCase() {
@@ -3806,6 +3885,21 @@ const caseLabels = {
     }
   });
 
+  window.addEventListener('hashchange', () => {
+    if (isSyncingHash) return;
+
+    const caseId = caseIdFromHash(window.location.hash);
+
+    if (caseId) {
+      showCase(caseId, { skipHashUpdate: true });
+      return;
+    }
+
+    if (modal.classList.contains('open')) {
+      hideModal();
+    }
+  });
+
  /* Mobile Swipe Navigation mit Animation */
 if (window.innerWidth <= 820 && modalBody) {
   let startX = 0;
@@ -3858,7 +3952,13 @@ function animateSwipe(direction) {
   }, 220);
 }
 
-  updateCaseNav(caseOrder[currentIndex]);
+  const initialCaseId = caseIdFromHash(window.location.hash);
+
+  if (initialCaseId) {
+    showCase(initialCaseId, { skipHashUpdate: true });
+  } else {
+    updateCaseNav(caseOrder[currentIndex]);
+  }
 </script>
 </body>
 </html>
